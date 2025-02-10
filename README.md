@@ -1,8 +1,57 @@
-# React + Vite
+# GitHub Repo Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Это простое веб-приложение для поиска репозиториев на GitHub по имени пользователя. Приложение реализовано с использованием React и Vite и включает следующие возможности:
 
-Currently, two official plugins are available:
+- **Поиск репозиториев:** Пользователь вводит имя GitHub-аккаунта, после чего отображается список репозиториев данного пользователя.
+- **Debounce ввода:** Для предотвращения избыточных запросов к GitHub API используется механизм debounce (с задержкой в 500 мс).
+- **Бесконечная прокрутка / Пагинация:** Репозитории загружаются порциями по 20 штук; при прокрутке страницы вниз происходит подгрузка следующей страницы.
+- **Обработка ошибок:** При возникновении ошибок (например, неверное имя пользователя или проблемы с сетью) пользователю отображается соответствующее сообщение об ошибке.
+- **Адаптивный дизайн:** Интерфейс корректно отображается на устройствах с разрешениями от 320px до 1920px.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Технологии
+
+- **React** – библиотека для создания пользовательских интерфейсов.
+- **Vite** – быстрый инструмент сборки для разработки.
+- **Lodash.debounce** – реализация debounce ввода.
+- **Docker** – контейнеризация production-сборки, которая обслуживается через Nginx.
+
+## Запуск в режиме разработки
+
+1. **Клонирование репозитория:**
+
+   ```bash
+   git clone https://github.com/MaEsTr0oF/GitFind-test-.git
+   cd GitFind-test-
+   ```
+
+2. **Установка зависимостей:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Запуск приложения:**
+
+   ```bash
+   npm run dev
+   ```
+
+4. Откройте браузер и перейдите по адресу,
+   указанному в консоли (например, http://localhost:3000).
+
+# **_Сборка и запуск через Docker_**
+
+## Приложение можно запустить в production-режиме через Docker:
+
+1. **Сборка Docker-образа:**
+
+   ```bash
+   docker build -t github-repo-finder .
+   ```
+
+2. **Запуск Docker-контейнера:**
+   ```bash
+   docker run -p 8080:80 github-repo-finder
+   ```
+3. **Откройте браузер и перейдите по адресу http://localhost,
+   чтобы увидеть приложение.**
